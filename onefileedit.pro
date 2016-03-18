@@ -6,8 +6,6 @@ CONFIG += console
 CONFIG -= app_bundle
 DESTDIR = bin
 
-LIBS += -lcurses
-
 TEMPLATE = app
 
 SOURCES += \
