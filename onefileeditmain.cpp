@@ -60,5 +60,5 @@ QStringList find_file_paths(QString dirpath,QString filter,bool recursive) {
 }
 
 void print_usage() {
-    printf("Usage: onefileedit [dirname] --type=m --editor=/usr/bin/gedit\n");
+    printf("Usage: onefileedit [dirname] --type=m --editor=/usr/bin/gedit --recursive=1\n");
 }
