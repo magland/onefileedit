@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
     open_editor(editor,tmp_fname);
     printf("Press [ENTER] to save changes to files: ");
     std::cin.ignore();
-
     onefile_save_changes(tmp_fname);
 
     //return a.exec();

@@ -57,7 +57,8 @@ void open_editor(QString editor_exe,QString fname)
 {
     QString cmd=QString("%1 %2 &").arg(editor_exe).arg(fname);
     printf("%s\n",cmd.toLatin1().data());
-    system(cmd.toLatin1().data());
+	int ret=system(cmd.toLatin1().data());
+	Q_UNUSED(ret)
 }
 
 QString trim_empty_lines_at_end(const QString &str) {
@@ -106,6 +107,7 @@ void onefile_save_changes(QString fname)
     int i=0;
     while (i<lines.count()) {
         QString line=lines[i];
+		bool handled=false;
         if (line.contains(critical_string)) {
             QString line_plus_two=lines.value(i+2);
             if (line_plus_two.contains(critical_string)) {
@@ -116,9 +118,10 @@ void onefile_save_changes(QString fname)
                 current_file_name=trim_initial_comment_characters(lines.value(i+1));
                 current_file_text="";
                 i+=3;
+				handled=true;
             }
         }
-        else {
+		if (!handled) {
             if (!current_file_name.isEmpty()) {
                 current_file_text+=line+"\n";
             }
